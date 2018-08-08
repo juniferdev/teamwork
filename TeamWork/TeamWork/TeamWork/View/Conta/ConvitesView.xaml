@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TeamWork.View.Conta.ConvitesView"
+             Title="Convites"
+             BarBackgroundColor="#3b5998">
+    <ContentPage x:Name="IconLabelGrupos" Title="{Binding LabelGrupo}" BackgroundColor="#e9ebee">
+            <StackLayout>
+                <ListView x:Name="conviteGrupos" ItemsSource="{Binding ConvitesGrupo}" ItemSelected="SelecionouConviteGrupo">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Convite}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+    </ContentPage>
+    <ContentPage x:Name="IconLabelProjetos" Title="{Binding LabelProjeto}" BackgroundColor="#e9ebee">
+        <StackLayout>
+            <ListView x:Name="conviteProjetos" ItemsSource="{Binding ConvitesProjeto}" ItemSelected="SelecionouConviteProjeto">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Convite}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage>
+</TabbedPage>

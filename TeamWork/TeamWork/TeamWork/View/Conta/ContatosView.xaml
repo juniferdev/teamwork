@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TeamWork.View.Conta.ContatosView"
+             Title="Meus Contatos">
+    <ContentPage.Content>
+        <StackLayout Padding="15" BackgroundColor="#e9ebee">
+            <SearchBar Placeholder="Pesquisar Contatos" HorizontalOptions="Start"/>
+            <ListView x:Name="contatoList" ItemsSource="{Binding Contatos}" ItemSelected="SelecionouContato">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding NomeUsuario}" Detail="{Binding Email}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Text="Adicionar Contato:" TextColor="Black" FontSize="Medium"/>
+            <StackLayout Orientation="Horizontal">
+                <Entry Placeholder="E-mail do usuário" Text="{Binding EmailView}" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Buscar" TextColor="White" BackgroundColor="#3b5998" Command="{Binding PesquisarCommand}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

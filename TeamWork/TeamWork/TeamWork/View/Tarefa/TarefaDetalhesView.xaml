@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TeamWork.View.Tarefa.TarefaDetalhesView"
+             Title="{Binding NomeTarefaView}"
+             BarBackgroundColor="#3b5998">
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Name="Editar" Icon="edit.png" Command="{Binding EditarTarefaCommand}"/>
+        <ToolbarItem Name="Salvar" Icon="save.png" Command="{Binding SalvarTarefaCommand}"/>
+    </TabbedPage.ToolbarItems>
+    <!--Pages can be added as references or inline-->
+    <ContentPage Title="Info" BackgroundColor="#e9ebee">
+        <StackLayout Orientation="Vertical" Padding="20" Spacing="5">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="*" TextColor="Red" VerticalOptions="CenterAndExpand"/>
+                <Label Text="Nome:" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black"/>
+                <Entry Text="{Binding NomeTarefaView, Mode=TwoWay}" HorizontalOptions="FillAndExpand" IsEnabled="{Binding CamposHabilitados}"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="*" TextColor="Red" VerticalOptions="CenterAndExpand"/>
+                <Label Text="Tipo:" Margin="0,0,20,0" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black"/>
+                <Picker 
+                    Title="{Binding TipoTarefaView, Mode=TwoWay}" 
+                    HorizontalOptions="FillAndExpand"  
+                    IsEnabled="{Binding CamposHabilitados}"
+                    SelectedIndexChanged="SelecionouTipoTarefa">
+                    <Picker.Items>
+                        <x:String>Tarefa</x:String>
+                        <x:String>Reuniao</x:String>
+                        <x:String>Revisao</x:String>
+                        <x:String>Duvida</x:String>
+                        <x:String>Teste</x:String>
+                        <x:String>Bug</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Projeto:" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black"/>
+                <Picker 
+                        Title="{Binding ProjetoSelecionado, Mode=TwoWay}" 
+                        HorizontalOptions="FillAndExpand" 
+                        IsEnabled="{Binding CamposHabilitados}"
+                        ItemsSource="{Binding Projetos}"
+                        ItemDisplayBinding="{Binding NomeProjeto,Mode=TwoWay}"
+                        SelectedIndexChanged="SelecionouProjeto"
+                />
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Descrição:" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black"/>
+                <Editor BackgroundColor="White" HorizontalOptions="FillAndExpand" HeightRequest="150" Text="{Binding DescricaoView}" IsEnabled="{Binding CamposHabilitados}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Estado:" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black"/>
+                <Picker 
+                        Title="{Binding EstadoView, Mode=TwoWay}" 
+                        HorizontalOptions="FillAndExpand" 
+                        IsEnabled="{Binding HabilitarEstado}"
+                        ItemsSource="{Binding Estados}"
+                        ItemDisplayBinding="{Binding EstadoStr,Mode=TwoWay}"
+                        SelectedIndexChanged="SelecionouEstado"
+                />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Razão:" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black"/>
+                <Entry Text="{Binding RazaoView, Mode=TwoWay}" IsEnabled="False" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Start"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="Stakeholders" BackgroundColor="#e9ebee">
+        <StackLayout Padding="20">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Criador:" Margin="0,0,40,0" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black"/>
+                <Entry HorizontalOptions="FillAndExpand" Text="{Binding CriadorView, Mode=TwoWay}" IsEnabled="False"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Responsável:" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black"/>
+                <Entry HorizontalOptions="FillAndExpand" Text="{Binding ResponsavelView, Mode=TwoWay}" IsEnabled="False"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical">
+                <ListView ItemsSource="{Binding Contatos}" IsEnabled="{Binding CamposHabilitados}" ItemSelected="SelecionouContato">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding NomeUsuario}" Detail="{Binding Email}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Text="Atribuir Tarefa" Command="{ Binding AtribuirResponsavelCommand }" TextColor="White" BackgroundColor="#3b5998" HorizontalOptions="FillAndExpand" VerticalOptions="End" IsEnabled="{Binding CamposHabilitados}" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="Cronograma" BackgroundColor="#e9ebee">
+        <StackLayout Padding="20">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Previsão de Início:" Margin="0,0,20,0" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black"/>
+                <DatePicker Date="{Binding DataPrevInicioView}" Format="dd/MM/yyyy" IsEnabled="{Binding CamposHabilitados}" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Previsão de Término:" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black"/>
+                <DatePicker Date="{Binding DataPrevTerminoView}" Format="dd/MM/yyyy" MinimumDate="{Binding DataMaiorQueInicio}" IsEnabled="{Binding CamposHabilitados}" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage>
+</TabbedPage>

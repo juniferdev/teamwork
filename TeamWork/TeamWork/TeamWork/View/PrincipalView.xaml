@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TeamWork.View.PrincipalView"
+             Title="{Binding NomeUsuario}">
+    <ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0"  BackgroundColor="#e9ebee">
+                <Grid Grid.Row="0">
+                    <ListView ItemsSource="{Binding Tarefas}" ItemSelected="SelecionouTarefa">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding NomeTarefa}" TextColor="Black" Detail="{Binding DetailTarefa}" DetailColor="{Binding CorSituacao}"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </Grid>
+            <!--Image Source="charts.jpg" Grid.Row="0"/-->
+            <Grid Padding="50,30,50,30" Grid.Row="1" BackgroundColor="#e9ebee">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="0.5*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Row="0" Grid.Column="0" BackgroundColor="#3b5998">
+                    <Grid Padding="3" RowSpacing="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.70*"/>
+                            <RowDefinition Height="0.30*"/>
+                        </Grid.RowDefinitions>
+                        <Image Source="task.png" Margin="10,10,10,5">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding TarefasCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label Text="Tarefas" TextColor="White" FontSize="Medium" Grid.Row="1" HorizontalTextAlignment="Center"/>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="0" Grid.Column="1" BackgroundColor="#3b5998">
+                    <Grid Padding="3" RowSpacing="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.70*"/>
+                            <RowDefinition Height="0.30*"/>
+                        </Grid.RowDefinitions>
+                        <Image Source="prj.png" Margin="10,10,10,5">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ProjetosCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label Text="Projetos" TextColor="White" FontSize="Medium" Grid.Row="1" HorizontalTextAlignment="Center"/>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="1" Grid.Column="0" BackgroundColor="#3b5998">
+                    <Grid Padding="3" RowSpacing="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.70*"/>
+                            <RowDefinition Height="0.30*"/>
+                        </Grid.RowDefinitions>
+                        <Image Source="team.png" Margin="10,10,10,5">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding EquipesCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label Text="Grupos" TextColor="White" FontSize="Medium" Grid.Row="1" HorizontalTextAlignment="Center"/>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="1" Grid.Column="1" BackgroundColor="#3b5998">
+                    <Grid Padding="3" RowSpacing="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.70*"/>
+                            <RowDefinition Height="0.30*"/>
+                        </Grid.RowDefinitions>
+                        <Image Source="timer.png" Margin="10,10,10,5">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CronogramasCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label Text="Cronograma" TextColor="White" FontSize="Medium" Grid.Row="1" HorizontalTextAlignment="Center"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

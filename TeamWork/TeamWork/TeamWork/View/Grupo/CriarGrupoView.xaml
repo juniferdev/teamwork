@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TeamWork.View.Grupo.CriarGrupoView"
+             BarBackgroundColor="#3b5998"
+             Title="Novo Grupo">
+    <!--Pages can be added as references or inline-->
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Name="Salvar" Icon="save.png" Command="{Binding CriarGrupoCommand}"/>
+    </TabbedPage.ToolbarItems>
+    <ContentPage Title="Info">
+        <StackLayout BackgroundColor="#e9ebee" Padding="20" Spacing="20">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="*" TextColor="Red" VerticalOptions="CenterAndExpand"/>
+                <Label Text="Nome:" TextColor="Black" VerticalOptions="CenterAndExpand" FontSize="Medium"/>
+                <Entry Text="{Binding NomeView}" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            <Label Text="Objetivo:" TextColor="Black" FontSize="Medium"/>
+            <Editor Text="{Binding ObjetivoView}" BackgroundColor="White" HorizontalOptions="FillAndExpand" HeightRequest="150" />
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="Stakeholders">
+        <StackLayout BackgroundColor="#e9ebee" Padding="20" Spacing="20">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Adicionar você ao grupo?" FontSize="Medium"/>
+                <Switch IsToggled="{Binding IncluirCriador}"/>
+            </StackLayout>
+            <Label Text="Convidados:" TextColor="Black" FontSize="Medium"/>
+            <ListView ItemsSource="{Binding Convidados}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding NomeDestinatario}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="Convidar">
+        <StackLayout BackgroundColor="#e9ebee" Padding="20">
+            <Label Text="Contatos:" TextColor="Black" FontSize="Medium"/>
+            <ListView x:Name="usuList" ItemsSource="{Binding Contatos}" ItemSelected="SelecionouContato">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Contato}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Convidar Selecionado" TextColor="White" BackgroundColor="#3b5998" Command="{Binding ConvidarContatoGrupoCommand}" IsEnabled="{Binding HabilitarBotaoConvidar}"/>
+        </StackLayout>
+    </ContentPage>
+</TabbedPage>

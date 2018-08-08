@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TeamWork.View.Projeto.ProjetosView"
+             Title="Projetos">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Adicionar" Icon="prjadd.png" Command="{Binding CriarProjetoCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#e9ebee">
+            <SearchBar Placeholder="Pesquisar" TextChanged="TextoAlteradoNaSearchBar" Margin="0,0,10,0"/>
+            <ListView x:Name="prjList" ItemsSource="{Binding Projetos, Mode=TwoWay}" ItemSelected="SelecionouProjeto">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding NomeProjeto}" Detail="{Binding ObjetivoProjeto}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

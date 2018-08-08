@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TeamWork.View.Projeto.CriarProjetoView"
+             Title="Novo Projeto">
+    <!--Pages can be added as references or inline-->
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Name="Salvar" Icon="save.png" Command="{Binding CriarProjetoCommand}"/>
+    </TabbedPage.ToolbarItems>
+    <ContentPage Title="Info" BackgroundColor="#e9ebee">
+        <Grid Padding="20">
+            <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="*" TextColor="Red" VerticalOptions="CenterAndExpand"/>
+                    <Label Text="Nome:" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black"/>
+                    <Entry HorizontalOptions="FillAndExpand" Text="{Binding NomeView}"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Descrição:" FontSize="Medium" TextColor="Black"/>
+                    <Editor BackgroundColor="White" HorizontalOptions="FillAndExpand" HeightRequest="150" Text="{Binding DescricaoView}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Previsão de Inicio:" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black"/>
+                    <DatePicker TextColor="SlateGray" HorizontalOptions="FillAndExpand" Format="dd/MM/yyyy" Date="{Binding DataPrevInicioView}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Previsão de Término:" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black"/>
+                    <DatePicker TextColor="SlateGray" HorizontalOptions="FillAndExpand" Format="dd/MM/yyyy" MinimumDate="{Binding DataMaiorQueInicio}" Date="{Binding DataPrevTerminoView}"/>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ContentPage>
+    <ContentPage Title="Stakeholders" BackgroundColor="#e9ebee">
+        <Grid Padding="20">
+            <StackLayout Spacing="10">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Contratante:" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black"/>
+                    <Entry HorizontalOptions="FillAndExpand" Text="{Binding ContratanteView}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Contratada:" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black"/>
+                    <Entry HorizontalOptions="FillAndExpand" Text="{Binding ContratadaView}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Gerente:" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black"/>
+                    <Entry HorizontalOptions="FillAndExpand" Text="{Binding GerenteView,Mode=TwoWay}" Margin="30,0,0,0" IsEnabled="False"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Convidados:" TextColor="Black" FontSize="Medium"/>
+                    <ListView ItemsSource="{Binding Convidados}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding NomeDestinatario}"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ContentPage>
+    <ContentPage Title="Convidar" BackgroundColor="#e9ebee">
+        <Grid Padding="10">
+            <StackLayout Spacing="20">
+                <ListView x:Name="contatoList" ItemsSource="{Binding Contatos}" ItemSelected="SelecionouContato">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding NomeUsuario}" Detail="{Binding Email}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Text="Convidar Selecionado" TextColor="White" BackgroundColor="#3b5998" Command="{Binding ConvidarContatoProjetoCommand}" IsEnabled="{Binding HabilitarBotaoConvidar}"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage>
+</TabbedPage>

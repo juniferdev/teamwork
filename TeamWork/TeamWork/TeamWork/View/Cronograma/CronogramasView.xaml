@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TeamWork.View.Cronograma.CronogramasView">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="No Prazo"    Icon="noprazo.png" Command="{Binding NoPrazoCommand }"/>
+        <ToolbarItem Name="Atrasada"    Icon="atrasada.png" Command="{Binding AtrasadaCommand}"/>
+        <ToolbarItem Name="Finalizada"  Icon="finalizada.png" Command="{Binding FinalizadaCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+    </ContentPage.Content>
+</ContentPage>

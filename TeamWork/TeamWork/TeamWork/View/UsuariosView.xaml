@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TeamWork.View.UsuariosView"
+             Title="Manutenção Banco">
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <!--StackLayout>
+                <ListView ItemsSource="{Binding ConviteProjetos, Mode=TwoWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding NomeRemetente}" Detail="{Binding NomeDestinatario}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout-->
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Apagar Usuario" Command="{Binding ApagarUsuarioCommand}" />
+                    <Button Text="Apagar Convite" Command="{Binding ApagarConviteCommand}" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Apagar Projeto" Command="{Binding ApagarProjetoCommand}" />
+                    <Button Text="Apagar UsuarioProjeto" Command="{Binding ApagarUsuarioProjetoCommand}" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Apagar Tarefa" Command="{Binding ApagarTarefaCommand}" />
+                    <Button Text="Apagar UsuarioTarefa" Command="{Binding ApagarUsuarioTarefaCommand}" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Apagar Grupo" Command="{Binding ApagarGrupoCommand}" />
+                    <Button Text="Apagar UsuarioGrupo" Command="{Binding ApagarUsuarioGrupoCommand}" />
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

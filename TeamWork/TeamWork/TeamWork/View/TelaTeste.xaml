@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TeamWork.View.TelaTeste">
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Projeto:" FontSize="Medium" VerticalOptions="CenterAndExpand"/>
+                <Picker Title="Selecionar Projeto"
+                    ItemsSource="{Binding Projetos}"
+                    ItemDisplayBinding="{Binding NomeProjeto}"
+                    SelectedIndexChanged="Picker_SelectedIndexChanged"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Id do Projeto:" FontSize="Medium" VerticalOptions="CenterAndExpand"/>
+                <Label Text="{Binding ProjetoSelecionado}" FontSize="Medium" VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TeamWork.View.Conta.RecuperarContaView"
+             Title="Recuperação da Conta">
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="20" BackgroundColor="#e9ebee">
+            <Label FontSize="Medium" HorizontalTextAlignment="Center" Text="Informe o e-mail usado pela sua conta.&#10;Nós enviaremos uma senha temporária&#10;para que você consiga entrar.">
+            </Label>
+            <Entry Placeholder="E-mail da conta" HorizontalTextAlignment="Center" />
+            <Button Text="Enviar" TextColor="White" BackgroundColor="#3b5998"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

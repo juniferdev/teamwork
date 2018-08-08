@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TeamWork.View.Conta.EditarContaView"
+             Title="Editar Conta">
+    <ContentPage.Content>
+        <!--StackLayout BackgroundColor="#e9ebee" Padding="50" Spacing="10">
+            <Entry Placeholder="Nome" Text="{Binding NomeView, Mode=TwoWay}" HorizontalTextAlignment="Center"/>
+            <Entry Placeholder="E-mail" Text="{Binding EmailView, Mode=TwoWay}" HorizontalTextAlignment="Center"/>
+            <Entry Placeholder="Senha" Text="{Binding SenhaView, Mode=TwoWay}" IsPassword="True" HorizontalTextAlignment="Center"/>
+            <Entry Placeholder="Confirmar Senha" Text="{Binding ConfirmSenhaView, Mode=TwoWay}" IsPassword="True" HorizontalTextAlignment="Center"/>
+            <Button Text="Salvar" TextColor="White" BackgroundColor="#43b05c" Command="{Binding EditarContaCommand}" HorizontalOptions="FillAndExpand"/>
+        </StackLayout-->
+        <Grid Padding="20" RowSpacing="10" BackgroundColor="#e9ebee">
+            <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Nome:" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black" Margin="0,0,60,0"/>
+                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" Text="{Binding NomeView, Mode=TwoWay}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="E-mail:" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black" Margin="0,0,60,0"/>
+                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" Text="{Binding EmailView, Mode=TwoWay}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Senha:" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black" Margin="0,0,60,0"/>
+                    <Entry IsPassword="True" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" Text="{Binding SenhaView, Mode=TwoWay}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Repetir Senha:" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black"/>
+                    <Entry IsPassword="True" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" Text="{Binding ConfirmSenhaView, Mode=TwoWay}"/>
+                </StackLayout>
+                <Button Text="Salvar" Margin="0,20,0,0" TextColor="White" BackgroundColor="#43b05c" Command="{Binding EditarContaCommand}" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TeamWork.View.Projeto.ProjetoDetalhesView"
+             Title="{Binding NomeView}"
+             BarBackgroundColor="#3b5998">
+    <!--Pages can be added as references or inline-->
+    <ContentPage Title="Info" BackgroundColor="#e9ebee">
+        <Grid Padding="20">
+            <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="*" TextColor="Red" VerticalOptions="CenterAndExpand"/>
+                    <Label Text="Nome:" FontSize="Medium" VerticalOptions="CenterAndExpand" TextColor="Black"/>
+                    <Entry Text="{Binding NomeView, Mode=TwoWay}" HorizontalOptions="FillAndExpand" IsEnabled="{Binding CamposHabilitados}" />
+                </StackLayout>
+                <Label Text="Descrição:" FontSize="Medium" TextColor="Black"/>
+                <Editor Text="{Binding DescricaoView, Mode=TwoWay}" BackgroundColor="White" HorizontalOptions="FillAndExpand" HeightRequest="150" IsEnabled="{Binding CamposHabilitados}" />
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Previsão de Inicio:" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black"/>
+                    <DatePicker Date="{Binding DataPrevInicio, Mode=TwoWay }" TextColor="SlateGray" Format="dd/MM/yyyy" HorizontalOptions="FillAndExpand" IsEnabled="{Binding CamposHabilitados}" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Previsão de Término:" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black"/>
+                    <DatePicker Date="{Binding DataPrevTermino, Mode=TwoWay}" TextColor="SlateGray" Format="dd/MM/yyyy" MinimumDate="{Binding DataMaiorQueInicio}" HorizontalOptions="FillAndExpand" IsEnabled="{Binding CamposHabilitados}" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Tarefas:" VerticalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black"/>
+                    <Image Source="task.png" WidthRequest="32" HeightRequest="32">
+                        <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ProjetoTarefasCommand}"/>
+                    </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ContentPage>
+    <ContentPage Title="Stakeholders" BackgroundColor="#e9ebee">
+        <Grid Padding="20">
+            <StackLayout Orientation="Vertical" Spacing="10">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Contratante:" FontSize="Medium" VerticalOptions="CenterAndExpand" TextColor="Black"/>
+                    <Entry Text="{Binding ContratanteView, Mode=TwoWay}" HorizontalOptions="FillAndExpand" IsEnabled="{Binding CamposHabilitados}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Contratada:" FontSize="Medium" VerticalOptions="CenterAndExpand" TextColor="Black"/>
+                    <Entry Text="{Binding ContratadaView,  Mode=TwoWay}" HorizontalOptions="FillAndExpand" IsEnabled="{Binding CamposHabilitados}" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Gerente:" FontSize="Medium" VerticalOptions="CenterAndExpand" TextColor="Black"/>
+                    <Entry Text="{Binding GerenteView,  Mode=TwoWay}" HorizontalOptions="FillAndExpand" Margin="30,0,0,0" IsEnabled="False"/>
+                </StackLayout>
+                <Label Text="Colaboradores:" FontSize="Medium" TextColor="Black"/>
+                <ListView x:Name="colabList" ItemsSource="{Binding UsuariosProjeto}" ItemSelected="SelecionouColaborador">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Contato}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Text="Remover Selecionado" TextColor="White" BackgroundColor="#3b5998" Command="{Binding RemoverColaboradorCommand}" IsEnabled="{Binding HabilitarBotaoRemover}"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage>
+    <ContentPage Title="Convidar" BackgroundColor="#e9ebee">
+        <StackLayout Spacing="20">
+            <Label Text="Contatos:" TextColor="Black" FontSize="Medium"/>
+            <ListView ItemsSource="{Binding Contatos}" ItemSelected="SelecionouContato">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Contato}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Text="Convidar Selecionado" TextColor="White" BackgroundColor="#3b5998" Command="{Binding ConvidarContatoCommand}" IsEnabled="{Binding HabilitarBotaoConvidar}"/>
+            </StackLayout>
+    </ContentPage>
+</TabbedPage>

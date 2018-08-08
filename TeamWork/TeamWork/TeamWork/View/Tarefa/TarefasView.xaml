@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TeamWork.View.Tarefa.TarefasView"
+             Title="Tarefas">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Adicionar" Icon="taskadd.png" Command="{Binding CriarTarefaCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#e9ebee">
+            <SearchBar Placeholder="Pesquisar" TextChanged="TextoAlteradoNaSearchBar" Margin="0,0,30,0"/>
+            <ListView x:Name="tskList" ItemsSource="{Binding Tarefas}" ItemSelected="SelecionouTarefa" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding TextTarefa}" TextColor="Black" Detail="{Binding Situacao}" DetailColor="{Binding CorSituacao}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

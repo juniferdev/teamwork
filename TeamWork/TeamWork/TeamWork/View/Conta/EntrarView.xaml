@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TeamWork.View.Conta.EntrarView">
+    <ContentPage.Content>
+        <Grid BackgroundColor="#e9ebee" Padding="20,40,10,10" RowSpacing="15">
+            <Grid.RowDefinitions>
+                <!--Linha 0: Imagem-->
+                <RowDefinition Height="100"/>
+
+                <!--Linha 1: Label Bem vindo-->
+                <RowDefinition Height="40"/>
+                
+                <!--Linha 2: Entry Usuário-->
+                <RowDefinition Height="40"/>
+
+                <!--Linha 3: Entry Senha-->
+                <RowDefinition Height="40"/>
+                
+                <!--Linha 4: Button Entrar-->
+                <RowDefinition Height="50"/>
+
+                <!--Linha 5: Label Criar uma conta-->
+                <RowDefinition Height="20"/>
+
+                <!--Linha 6: Esqueci minha senha-->
+                <RowDefinition Height="30"/>
+                
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="32"/>
+                <ColumnDefinition Width="260"/>
+            </Grid.ColumnDefinitions>
+            
+            <!--Linha 0-->
+            <Image  Source="logo.png" Grid.Row="0" Grid.Column="1"/>
+            
+            <!--Linha 1-->
+            <Label  Text="Team Work" Grid.Row="1" Grid.Column="1" FontSize="Medium" HorizontalTextAlignment="Center"/>
+            
+            <!--Linha 2-->
+            <Image  Source="usuario.png" Grid.Row="2" Grid.Column="0"/>
+            <Entry x:Name="email" Text="{Binding EmailView}" Placeholder="E-mail"  Grid.Row="2" Grid.Column="1" HorizontalTextAlignment="Center"/>
+            
+            <!--Linha 3-->
+            <Image  Source="password.png" Grid.Row="3" Grid.Column="0"/>
+            <Entry x:Name="senha" Text="{Binding SenhaView}" Placeholder="Senha" IsPassword="True" Grid.Row="3" Grid.Column="1" HorizontalTextAlignment="Center"/>
+            
+            <!--Linha 4-->
+            <Button Text="Entrar" Grid.Row="4" Grid.Column="1" TextColor="White" BackgroundColor="#3b5998" Command="{Binding PrincipalViewCommand}"/>
+
+            <!--Linha 5-->
+            <Label  Text="Criar uma conta" Grid.Row="5" Grid.Column="1" FontSize="Medium" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CriarContaCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+            <!--Linha 6-->
+            <Label  Text="Esqueci minha senha" Grid.Row="6" Grid.Column="1" FontSize="Medium" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding EsqueciMinhaSenhaCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

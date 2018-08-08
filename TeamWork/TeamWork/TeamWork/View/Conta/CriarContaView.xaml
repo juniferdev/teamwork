@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TeamWork.View.Conta.CriarContaView"
+             Title="Criar uma conta">
+    <ContentPage.Content>
+
+        <StackLayout BackgroundColor="#e9ebee" Padding="40">
+        
+            <StackLayout>
+
+                <!--Nome-->
+                <Entry x:Name="nome" Placeholder="Nome" Text="{Binding NomeView}" HorizontalTextAlignment="Center"/>
+
+                <!--E-mail-->
+                <Entry x:Name="email" Placeholder="E-mail" Text="{Binding EmailView}" HorizontalTextAlignment="Center"/>
+
+                <!--Senha-->
+                <Entry x:Name="senha" Placeholder="Crie uma senha" Text="{Binding SenhaView}" IsPassword="True" HorizontalTextAlignment="Center"/>
+
+                <!--Confirmação de Senha-->
+                <Entry x:Name="confsenha" Placeholder="Repetir senha" Text="{Binding ConfirmSenhaView}" IsPassword="True" HorizontalTextAlignment="Center"/>
+
+                <Label Text="{Binding AlertaForm, Mode=TwoWay}" TextColor="Purple" HorizontalTextAlignment="Center"/>
+
+            </StackLayout>
+       
+                <!--Botão para Efetuar Cadastro-->
+                <Button Text="Cadastrar" Command="{Binding CadastrarCommand}" TextColor="White" BackgroundColor="#43b05c" HorizontalOptions="FillAndExpand"/>
+
+            <Label TextColor="DarkRed">
+                <Label.Text>
+                A senha deverá conter:
+                - No mínimo 8 caracteres;
+                - No mínimo um caractere numérico;
+                - No mínimo uma letra maíscula.
+                </Label.Text>
+            </Label>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TeamWork.View.Grupo.GruposView"
+             Title="Grupos">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Adicionar" Icon="teamadd.png" Command="{Binding CriarGrupoCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#e9ebee">
+            <SearchBar Placeholder="Pesquisar" TextChanged="TextoAlteradoNaSearchBar" Margin="0,0,10,0"/>
+            <ListView x:Name="grpList" ItemsSource="{Binding Grupos, Mode=TwoWay}" ItemSelected="SelecionouGrupo" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding NomeGrupo}" Detail="{Binding ObjetivoGrupo}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
